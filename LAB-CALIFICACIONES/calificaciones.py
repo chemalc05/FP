@@ -24,11 +24,21 @@ def nota_cuatrimestre(t,p):
     return res
     
 
-def nota_continua(nt,np)
-    t1= a_cero(nt[0])
-    t2= a_cero(nt[1])
-    t3= a_cero(nt[2])
-    t4= a_cero(nt[3])
-    p1= a_cero(np[0])
-    p2= a_cero(np[1])
-    nota_c1 = nota_cuatrimestre((nt[0], nt[1],)np[0])
+def nota_cuatrimestre(nt,np):
+   
+    t1=a_cero(nt[0])
+    t2=a_cero(nt[1])
+    p=a_cero(np)
+    if nota_teoria(t1,t2)>=4:
+        res=0.1*t1+0.1*t2+0.8*p
+    else:
+        res=0
+    return res
+
+def nota_continua(nt,np):
+    c1=nota_cuatrimestre(nt[:2],np[0])
+    c2=nota_cuatrimestre(nt[2:],np[1])
+    res= {c1+c2}/2
+    if c1<4 or c2<4:
+        res=min(4,res)
+    return res
